@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "bots": "node f.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
@@ -24,12 +25,7 @@
     "type": "git",
     "url": "git+https://github.com/davidmann4/ogar-feeder-bot.git"
   },
-  "keywords": [
-    "ogar",
-    "agario",
-    "feeder",
-    "bot"
-  ],
+  "keywords": ["ogar", "agario", "feeder", "bot"],
   "author": "David Mann",
   "license": "MIT",
   "bugs": {
