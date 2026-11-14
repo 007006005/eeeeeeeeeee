@@ -13,7 +13,7 @@ config.userAgent = 'ogar-feeder-bot';
 // you can use the public server or run your own node server/server.js
 // if you are new just use the free public server ws://104.236.100.252:8081
 config.feederServer = "wss://eeeeeeeeeee-7t6c.onrender.com";
-config.serverPort = process.env.PORT || 8081;
+config.serverPort = process.env.PORT || 1000;
 config.client_uuid = "QDOGGobDI3kPzsj"; // after you install the userscript press F12 and search for a debug msg on the console
 
 // Location of your proxy files with HTTP proxies (Sock proxies not supported yet!)
