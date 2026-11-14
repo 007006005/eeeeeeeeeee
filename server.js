@@ -1,9 +1,9 @@
 var config = require('./config');
-var app = require('http').createServer()
+var app = require('http').createServer();
 var io = require('socket.io')(app, { cors: { origin: '*' } });
 var fs = require('fs');
 
-app.listen(config.serverPort);
+app.listen(config.serverPort, '0.0.0.0');
 
 console.log("Starting server on port " + config.serverPort);
 
@@ -14,10 +14,9 @@ io.on('connection', function(socket) {
     socket.room = data.uuid;
     socket.join(data.uuid);
 
-    if (data.type == "server") {      
+    if (data.type == "server") {
       io.sockets.in(socket.room).emit("force-login", "server-booted-up");
     }
-
   });
 
   socket.on('pos', function(data) {
@@ -29,10 +28,15 @@ io.on('connection', function(socket) {
     console.log(data);
     io.sockets.in(socket.room).emit('cmd', data);
   });
-  
+
   socket.on("spawn-count", function(data) {
     io.sockets.in(socket.room).emit("spawn-count", data);
-    });
+  });
+
+  // stato dei bot (caricati / in partita / totale) per il contatore dello userscript
+  socket.on('bot-status', function(data) {
+    io.sockets.in(socket.room).emit('bot-status', data);
+  });
 
   socket.emit("force-login", "startup");
 
