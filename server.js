@@ -1,6 +1,6 @@
 var config = require('./config');
 var app = require('http').createServer()
-var io = require('socket.io')(app);
+var io = require('socket.io')(app, { cors: { origin: '*' } });
 var fs = require('fs');
 
 app.listen(config.serverPort);
